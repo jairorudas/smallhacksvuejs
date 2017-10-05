@@ -3,6 +3,16 @@
   <div class="container">
     <div class="row">
       <div class="column">
+        <div class="radios">
+          <label class=""> 
+            Os
+            <input type="radio" class="" name="perguntas" checked @change="carregarPerguntas('os')" >
+          </label>
+          <label class=""> 
+            Banco de dados
+            <input type="radio" class="" name="perguntas" @change="carregarPerguntas('bd')" >
+          </label>
+        </div>
         <form>
           <button class="button button-small" @click="clearInput()">x</button>
           <input type="search" @input="filtro = $event.target.value" :value="filtro" placeholder="Assunto" id="nameField">
@@ -17,12 +27,11 @@
               <!-- Conteudo -->
               <transition name="fade">
                 <div class="resposta" v-show="isCollapsed">
+                  <blockquote v-for="(item, index) of pergunta.respostas" :key="index"> {{item}} </blockquote>
 
                   <!--<blockquote v-if="pergunta.pergunta.img">
                       <img :src="pergunta.respostas.img" alt="imagem">
                     </blockquote> -->
-
-                  <blockquote v-for="(item, index) of pergunta.respostas" :key="index"> {{item}} </blockquote>
                 </div>
               </transition>
             </li>
@@ -44,7 +53,9 @@
 
 <script>
 import Fuse from 'fuse.js'
-import perguntas from '../../static/perguntas.js'
+import perguntasOs from '../../static/perguntas-os.js'
+import perguntasBD from '../../static/perguntas-bd.js'
+
 export default {
   name: 'hello',
   /*props: {
@@ -73,10 +84,11 @@ export default {
       keys: [
         "title",
         "respostas.a",
-        "respostas.b"
+        "respostas.b",
+        "respostas.c"
       ]
     };
-    this.perguntas = perguntas;
+    this.perguntas = perguntasOs;
   },
 
   methods: {
@@ -86,6 +98,16 @@ export default {
     clearInput(){
       this.filtro = '';
       if(this.isCollapsed === true) this.isCollapsed = false;
+    },
+    carregarPerguntas(str){
+      switch (str) {
+        case 'bd':
+          this.perguntas = perguntasBD;    
+          break;      
+        default:
+          this.perguntas = perguntasOs;
+          break;
+      }
     }
   },
 
@@ -95,7 +117,7 @@ export default {
         var fuse = new Fuse(this.perguntas, this.options); // "list" is the item array
         return fuse.search(this.filtro);
       } else {
-        return perguntas
+        return this.perguntas
       }
     }
   }
@@ -115,6 +137,18 @@ export default {
 .resposta {
   margin-top: 10px;
   transition: display 0.5s ease;
+}
+
+.radios{
+  text-align: center;
+}
+.radios > label{
+  display: inline-block;
+  margin: 0 10px;
+}
+.radios > label > input{
+  width: 20px;
+  height: 20px;
 }
 
 h6 {
