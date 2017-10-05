@@ -4,39 +4,38 @@
     <div class="row">
       <div class="column">
         <form>
-            <input type="search" @input="filtro = $event.target.value" placeholder="Assunto" id="nameField">
+          <button class="button button-small" @click="clearInput()">x</button>
+          <input type="search" @input="filtro = $event.target.value" :value="filtro" placeholder="Assunto" id="nameField">
         </form>
 
-        <div>         
+        <div>
           <!-- Ordered list -->
           <ol>
-            <li  v-for="(pergunta, index) of filtrarRespostas" @click="toggleCollapsation">
-                <h6>{{ pergunta.title }}</h6>
-                
-               <!-- Conteudo -->
-               <transition name="fade">
+            <li v-for="(pergunta, index) of filtrarRespostas" :key="index" @click="toggleCollapsation">
+              <h6>{{ pergunta.title }}</h6>
+
+              <!-- Conteudo -->
+              <transition name="fade">
                 <div class="resposta" v-show="isCollapsed">
 
                   <!--<blockquote v-if="pergunta.pergunta.img">
-                    <img :src="pergunta.respostas.img" alt="imagem">
-                  </blockquote> -->
+                      <img :src="pergunta.respostas.img" alt="imagem">
+                    </blockquote> -->
 
-                  <blockquote v-for="item of pergunta.respostas"> {{item}} </blockquote>
+                  <blockquote v-for="(item, index) of pergunta.respostas" :key="index"> {{item}} </blockquote>
                 </div>
-               </transition>
+              </transition>
             </li>
           </ol>
 
-
-
           <!--<blockquote>
-            <li>
-              Ordered list item 2
-              <code class="code">jairo</code>
-            </li>
-            <p><em>Yeah!! Milligram is amazing.</em></p>
-          </blockquote> -->
-          
+              <li>
+                Ordered list item 2
+                <code class="code">jairo</code>
+              </li>
+              <p><em>Yeah!! Milligram is amazing.</em></p>
+            </blockquote> -->
+
         </div>
       </div>
     </div>
@@ -54,7 +53,7 @@ export default {
       required: true
     }
   },*/
-  data () {
+  data() {
     return {
       filtro: '',
       perguntas: [],
@@ -62,7 +61,7 @@ export default {
       isCollapsed: false
     }
   },
-  
+
   beforeMount() {
     this.options = {
       shouldSort: true,
@@ -75,22 +74,27 @@ export default {
         "title",
         "respostas.a",
         "respostas.b"
-    ]};
+      ]
+    };
     this.perguntas = perguntas;
   },
 
-  methods:{
+  methods: {
     toggleCollapsation() {
-        this.isCollapsed = !this.isCollapsed;
+      this.isCollapsed = !this.isCollapsed;
+    },
+    clearInput(){
+      this.filtro = '';
+      if(this.isCollapsed === true) this.isCollapsed = false;
     }
   },
 
   computed: {
     filtrarRespostas() {
-      if(this.filtro.length >= this.options.minMatchCharLength){
+      if (this.filtro.length >= this.options.minMatchCharLength) {
         var fuse = new Fuse(this.perguntas, this.options); // "list" is the item array
-        return fuse.search(this.filtro); 
-      }else{
+        return fuse.search(this.filtro);
+      } else {
         return perguntas
       }
     }
@@ -100,56 +104,71 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-  .container{
-    padding: 0 1.0rem;
-  }
-
-  .block{
-    display: block;
-  }
-
-  .resposta{
-    margin-top: 10px;
-    transition: display 0.5s ease;
-  }
-
-  h6{
-    font-size: 1.6rem;
-    font-weight: 400;
-  }
-  li{
-    border-bottom: 1px solid #9b4dca;
-    margin-bottom: 2rem;
-  }
-  form{
-    margin-bottom: 0.5rem;
-  }
-
-  blockquote{
-    border-left: 0.3rem solid #9b4dca;
-    font-size: 16px;
-  }
-
-  .code{
-    display: block;
-    background: #f4f5f6;
-    padding: 4px;
-    border-left: 3px dotted #9b4dca;
-  }
-
-  pre{
-    margin: 0;
-  }
-
-  ol{
-      list-style: cjk-ideographic;
-      margin-left: 0;
-  }
-
-  .fade-enter-active, .fade-leave-active {
-  transition: opacity .3s
+.container {
+  padding: 0 1.0rem;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+
+.block {
+  display: block;
+}
+
+.resposta {
+  margin-top: 10px;
+  transition: display 0.5s ease;
+}
+
+h6 {
+  font-size: 1.6rem;
+  font-weight: 400;
+}
+
+li {
+  border-bottom: 1px solid #9b4dca;
+  margin-bottom: 2rem;
+}
+
+form {
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+form button{
+  position: absolute;
+  right: 0;
+  padding: 0 2.0rem;
+}
+
+blockquote {
+  border-left: 0.3rem solid #9b4dca;
+  font-size: 16px;
+}
+
+.code {
+  display: block;
+  background: #f4f5f6;
+  padding: 4px;
+  border-left: 3px dotted #9b4dca;
+}
+
+pre {
+  margin: 0;
+}
+
+ol {
+  list-style: cjk-ideographic;
+  margin-left: 0;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity .2s
+}
+
+.fade-enter,
+.fade-leave-to
+/* .fade-leave-active below version 2.1.8 */
+
+{
   opacity: 0
 }
 </style>
