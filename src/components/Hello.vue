@@ -5,12 +5,12 @@
       <div class="column">
         <div class="radios">
           <label class=""> 
-            Os
             <input type="radio" class="" name="perguntas" checked @change="carregarPerguntas('os')" >
+            OS
           </label>
           <label class=""> 
-            Banco de dados
             <input type="radio" class="" name="perguntas" @change="carregarPerguntas('bd')" >
+            BD
           </label>
         </div>
         <form>
@@ -141,6 +141,7 @@ export default {
 
 .radios{
   text-align: center;
+  margin-bottom: 10px;
 }
 .radios > label{
   display: inline-block;

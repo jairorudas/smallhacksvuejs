@@ -6,6 +6,8 @@ import router from './router'
 
 require('normalize.css/normalize.css')
 require('milligram/dist/milligram.css')
+//require('pretty-checkbox/src/pretty.min.css')
+
 
 Vue.config.productionTip = false
 
