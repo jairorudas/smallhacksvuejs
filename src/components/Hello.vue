@@ -26,11 +26,21 @@
               <img :src="pergunta.url" v-show="!!pergunta.url" alt="imagem">
               
               <!-- Conteudo -->
-              <transition name="fade">
-                <div class="resposta" v-show="isCollapsed">
-                  <blockquote v-for="(item, index) of pergunta.respostas" :key="index">
-                      {{item}} 
+              <transition name="fade" v-if="pergunta.respostas !== '' ">
+                <div class="resposta" v-show="isCollapsed" >
+                  <blockquote>
+                      {{pergunta.respostas}} 
                    </blockquote>
+                </div>
+              </transition>
+
+              <transition name="fade" v-if="pergunta.questoes != 0">
+                 <div class="resposta" v-show="isCollapsed" >
+                  <blockquote v-for="(item, index) of pergunta.questoes" :key="index" >
+                    <h6>{{ item.item.enunciado }}</h6> 
+                    <p>{{ item.item.res }}</p>
+                    <img :src="item.item.url" alt="imagem" v-if="item.item.url"> 
+                  </blockquote>
                 </div>
               </transition>
             </li>
@@ -73,9 +83,10 @@ export default {
       minMatchCharLength: 3,
       keys: [
         "title",
-        "respostas.a",
-        "respostas.b",
-        "respostas.c"
+        "respostas",
+        "enuns.a",
+        "enuns.b"
+        //"questoes[0].item.res"
       ]
     };
     this.perguntas = perguntasOs;
@@ -145,6 +156,12 @@ export default {
 h6 {
   font-size: 1.6rem;
   font-weight: 400;
+}
+
+img{
+  display: block;
+  margin: 0 auto;
+  width: 100%;
 }
 
 li {
