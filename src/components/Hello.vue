@@ -36,11 +36,13 @@
 
               <transition name="fade" v-if="pergunta.questoes != 0">
                  <div class="resposta" v-show="isCollapsed" >
-                  <blockquote v-for="(item, index) of pergunta.questoes" :key="index" >
-                    <h6>{{ item.item.enunciado }}</h6> 
-                    <p>{{ item.item.res }}</p>
-                    <img :src="item.item.url" alt="imagem" v-if="item.item.url"> 
-                  </blockquote>
+                  <div v-for="(item, index) of pergunta.questoes" :key="index">
+                    <h6 class="text-center">{{ item.item.enunciado }}</h6> 
+                    <blockquote  >
+                      <p>{{ item.item.res }}</p>
+                      <img :src="item.item.url" alt="imagem" v-if="item.item.url"> 
+                    </blockquote>
+                  </div>
                 </div>
               </transition>
             </li>
@@ -153,6 +155,9 @@ export default {
   height: 20px;
 }
 
+.text-center{
+  text-align: justify;
+}
 h6 {
   font-size: 1.6rem;
   font-weight: 400;
