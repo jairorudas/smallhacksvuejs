@@ -23,28 +23,18 @@
           <ol>
             <li v-for="(pergunta, index) of filtrarRespostas" :key="index" @click="toggleCollapsation">
               <h6>{{ pergunta.title }}</h6>
-
+              <img :src="pergunta.url" v-show="!!pergunta.url" alt="imagem">
+              
               <!-- Conteudo -->
               <transition name="fade">
                 <div class="resposta" v-show="isCollapsed">
-                  <blockquote v-for="(item, index) of pergunta.respostas" :key="index"> {{item}} </blockquote>
-
-                  <!--<blockquote v-if="pergunta.pergunta.img">
-                      <img :src="pergunta.respostas.img" alt="imagem">
-                    </blockquote> -->
+                  <blockquote v-for="(item, index) of pergunta.respostas" :key="index">
+                      {{item}} 
+                   </blockquote>
                 </div>
               </transition>
             </li>
           </ol>
-
-          <!--<blockquote>
-              <li>
-                Ordered list item 2
-                <code class="code">jairo</code>
-              </li>
-              <p><em>Yeah!! Milligram is amazing.</em></p>
-            </blockquote> -->
-
         </div>
       </div>
     </div>
