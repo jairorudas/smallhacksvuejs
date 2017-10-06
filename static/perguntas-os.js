@@ -159,20 +159,22 @@ module.exports = [
 				a: 'Se permitirmos o acesso irrestriro a R, não poderemos garantir que a tarefa será executada corretamente, pois teremos condições de corrida. Quais são elas Somente uma condição de corrida ocorrerá, devido ao fato de cada processo primeiramente ler o valor do identificador de R, para depois armazenar o valor do próximo identificador em R. Como as operações de ler e de atualizar o valor de R não são atômicas, um processo pode ler o valor de R e, antes de ele salvar o novo valor em R, um ou mais processos podem ler este mesmo valor de R. Com isso, dois ou mais processos poderão obter o 4mesmo identificador, e a tarefa não será mais corretamente exe cutada.',
 				b: 'Um aluno de Sistemas Operacionais propôs a seguinte solução para evitar as condições de corrida: usar um semáforo de contagem S R , inicializado com o número de processos do conjunto. Cada processo, imediatamente antes de ler o valor de R, deve exe cutar a operação P sobre S R e, imediatamente após armazenar o novo valor em R, executar a operação V sobre S R . A solução proposta pelo aluno está correta A solução proposta pelo aluno não está correta. O pro blema não está no uso das operações P e V , que foram correta mente posicionadas no código, mas sim no fato de a proposta usar um semáforo de contagem. Como queremos garantir o acesso ex clusivo a R, S R deverá ser um semáforo binário, para garantir a exclusão mútua. O semáforo deverá ser inicializado com o valor 1, antes de executarmos os processos cooperativos, pois inicialmente R não estará sendo acessado pelos processos.'
 			},
-			questoes:[{
-				item: {
-					enunciado: 'Se permitirmos o acesso irrestriro a R, não poderemos garantir que a tarefa será executada corretamente, pois teremos condições de corrida. Quais são elas?',
-					res: 'Somente uma condição de corrida ocorrerá, devido ao fato de cada processo primeiramente ler o valor do identificador de R, para depois armazenar o valor do próximo identificador em R. Como as operações de ler e de atualizar o valor de R não são atômicas, um processo pode ler o valor de R e, antes de ele salvar o novo valor em R, um ou mais processos podem ler este mesmo valor de R. Com isso, dois ou mais processos poderão obter o 4mesmo identificador, e a tarefa não será mais corretamente exe cutada.',
-					url: ''
+			questoes:[
+				{
+					item: {
+						enunciado: 'Se permitirmos o acesso irrestriro a R, não poderemos garantir que a tarefa será executada corretamente, pois teremos condições de corrida. Quais são elas?',
+						res: 'Somente uma condição de corrida ocorrerá, devido ao fato de cada processo primeiramente ler o valor do identificador de R, para depois armazenar o valor do próximo identificador em R. Como as operações de ler e de atualizar o valor de R não são atômicas, um processo pode ler o valor de R e, antes de ele salvar o novo valor em R, um ou mais processos podem ler este mesmo valor de R. Com isso, dois ou mais processos poderão obter o 4mesmo identificador, e a tarefa não será mais corretamente exe cutada.',
+						url: ''
+					}
+				},
+				{
+					item: {
+						enunciado: 'Um aluno de Sistemas Operacionais propôs a seguinte solução para evitar as condições de corrida: usar um semáforo de contagem S R , inicializado com o número de processos do conjunto. Cada processo, imediatamente antes de ler o valor de R, deve exe cutar a operação P sobre S R e, imediatamente após armazenar o novo valor em R, executar a operação V sobre S R . A solução proposta pelo aluno está correta?',
+						res: 'A solução proposta pelo aluno não está correta. O problema não está no uso das operações P e V , que foram corretamente posicionadas no código, mas sim no fato de a proposta usar um semáforo de contagem. Como queremos garantir o acesso ex clusivo a R, S R deverá ser um semáforo binário, para garantir a exclusão mútua. O semáforo deverá ser inicializado com o valor 1, antes de executarmos os processos cooperativos, pois inicialmente R não estará sendo acessado pelos processos.',
+						url: ''
+					}
 				}
-			},
-			{
-				item: {
-					enunciado: 'Um aluno de Sistemas Operacionais propôs a seguinte solução para evitar as condições de corrida: usar um semáforo de contagem S R , inicializado com o número de processos do conjunto. Cada processo, imediatamente antes de ler o valor de R, deve exe cutar a operação P sobre S R e, imediatamente após armazenar o novo valor em R, executar a operação V sobre S R . A solução proposta pelo aluno está correta?',
-					res: 'A solução proposta pelo aluno não está correta. O problema não está no uso das operações P e V , que foram corretamente posicionadas no código, mas sim no fato de a proposta usar um semáforo de contagem. Como queremos garantir o acesso ex clusivo a R, S R deverá ser um semáforo binário, para garantir a exclusão mútua. O semáforo deverá ser inicializado com o valor 1, antes de executarmos os processos cooperativos, pois inicialmente R não estará sendo acessado pelos processos.',
-					url: ''
-				}
-			}]
+		]
 	},
 	{
 		title: "Descreva como multiplexar (i) por tempo e (ii) por espaço um dado recurso do computador, destacando em quais casos cada um destes é aplicado.",
@@ -197,5 +199,57 @@ module.exports = [
 	{
 		title: "Suponha que três processos A, B, e C acabaram de ser iniciados e são os únicos processos em execução no sistema. Suponha ainda que A executa por 2 quanta, B por 1 quantum e C por 3 quanta. Se usarmos o algoritmo de escalonamento por round-robin, qual seria a seqüência de execução dos processos no processador, se A foi o primeiro processo escolhido pelo escalonador e C foi o segundo?",
 		respostas: "Como A executa por 2 quanta, B por 1 quantum e C por 3 quanta, então A, B e C serão escolhidos para executar pelo escalonador por, respectivamente, 2, 1 e 3 vezes. Agora, como as duas primeiras escolhas do escalonador foram, respectivamente, A e C, então a ordem de execução será a seguinte: A, C, B, A, C e C.",
+	},
+	{
+		title: "Quais foram as principais inovações introduzidas em cada uma das quatro gerações de computadores?",
+		respostas: "A grande inovação introduzida pela primeira geração foi a de que agora o computador poderia executar cálculos matemáticos, que antes eram feitos manualmente por pessoas. Isso era feito através do uso exclusivo do computador pelo programador, que manipulava direta- mente os componentes do hardware. Já na segunda geração, a principal inovação foi a introdução do primeiro sistema operacional, o sistema de gerenciamento em lote. Neste sistema, os usuários submetiam os pro- gramas para execução, que posteriormente eram organizados em lotes pelo operador. Mais tarde, os lotes eram executados no computador pelo sistema operacional, e depois os resultados dos programas eram coletados pelo operador para serem impressos e disponibilizados aos usuários. A principal inovação da terceira geração foi a introdução do conceito de multiprogramação. Este conceito não somente permitiu que diversos programas fossem executados concorrentemente no computa- dor, como também permitiu que o processador deixasse de ficar ocioso quando o programa em execução fazia operações de E/S. Finalmente, a principal inovação da quarta geração foi o surgimento dos computa- dores pessoais, o que permitiu a indivı́duos possuı́rem os seus próprios computadores. Isso não somente causou o resurgimento dos sistemas operacionais monousuários, como também permitiu o surgimento das redes de computadores o que, em conseqüência, causou a criação dos sistemas operacionais de rede e distribuı́dos.",
+	},
+	{
+		title: "Com que finalidade foi criado o conceito de arquivos especiais? Quantos deles existem, e quais são as principais diferenças entre eles?",
+		respostas: "Os arquivos especiais foram criados com o objetivo de facilitar o acesso às versões abstratas dos dispositivos fı́sicos do computador criadas pelo sistema operacional, como parte da sua função de prover uma máquina estendida mais fácil de ser usada do que a máquina real. -Existem dois tipos de arquivos especiais, os de bloco e os de caractere. A primeira diferença é no uso destes arquivos. Os arquivos especiais de bloco são usados pelos dispositivos abstratos que são compostos por um conjunto de blocos que podem ser acessados aleatoriamente, como as versões abstratas dos discos fı́sicos do computador. Já os arquivos especiais de caractere são usados por dispositivos abstratos que podem ser modelados por um fluxo de caracteres, como as versões abstratas das impressoras do computador. A outra diferença é a de que podemos acessar qualquer posição de um arquivo especial de bloco, enquanto que em um arquivo especial de caractere, devemos acessar um fluxo contı́nuo de caracteres sempre a partir da última posição acessada do arquivo.",
+	},
+	{
+		title: "Qual é a função exercida pelo monitor de máquina virtual?",
+		respostas: "O monitor de máquina virtual é o responsável pela criação e pelo gerenciamento das máquinas virtuais. As máquinas virtuais cria- das pelo monitor são cópias idênticas da máquina real, ou seja, não são criadas máquinas estendidas, com dispositivos abstratos mais fáceis de serem usados. Como parte do gerenciamento, o monitor de máquina virtual provê o compartilhamento da máquina real entre as diversas máquinas virtuais, o que permite que cada uma delas possa usar os recursos (como o processador) da máquina real. Para fazer isso, o mo- nitor intercepta cada acesso ao hardware em cada máquina virtual, para mapeá-lo para um acesso ao hardware da máquina real. Isso será feito de modo transparente ao programa (em geral um sistema operaci- onal) executado sobre a máquina virtual, pois o resultado deste acesso será passado para este programa como se tivesse vindo diretamente do hardware da máquina real.",
+	},
+	{
+		title: "Discuta o papel das interrupções no escalonamento dos processos pelo sistema operacional.",
+		respostas: "As interrupções são essenciais quando o sistema operacional usa um algoritmo de escalonamento preemptivo, isto é, um algoritmo que alterna o uso do processador entre os processos, ao invés de alocar o processador a um processo até ele terminar a sua execução. O algo- ritmo de escalonamento usa as interrupções para suspender o processo em execução, e para desbloquear um processo caso a interrupção in- dique que o evento externo (por exemplo, o término de uma operação de E/S) que o processo estava esperando ocorreu. No primeiro caso, quando a interrupção ocorre, o escalonador pode permitir que o pro- cesso continue a executar, ou pode escolher um outro processo para executar no processador. Finalmente, no segundo caso, o escalonador pode alocar imediatamente o processador ao processo desbloqueado se ele precisar tratar imediatamente do resultado gerado pelo evento, ou pode colocar o processo no estado pronto se o resultado do evento pode ser tratado mais tarde.",
+	},
+	{
+		title: "Suponha que temos uma região de memória R compartilhada por vários processos. Como podemos usar os semáforos para garantir o acesso exclusivo a esta região de memória R?",
+		respostas: "Para garantir que cada processo acesse exclusivamente a região de memória R, precisaremos usar um semáforo binário acesso. Como inicialmente nenhum processo estará executando e acessando a região de memória R, o valor inicial de acesso será de 1. Agora, quando um processo desejar acessar a região de memória R, ele deverá executar a operação P sobre acesso imediatamente antes de acessar R, e deverá executar a operação V sobre acesso imediatamente após acessar R.",
+	},
+	{
+		title: "Descreva os algoritmos de escalonamento (i) por round robin; (ii) por prioridades; e (iii) o do trabalho mais curto primeiro.",
+		respostas: '',
+			enuns: {
+				a: 'No algoritmo de escalonamento por round robin, os processos no estado pronto executam alternadamente no processador por um quan- tum, cuja duração é definida pelo sistema operacional e é unico para todos os processos. Depois de executar por um quantum, um processo somente executará novamente no processador após todos os outros pro- cessos no estado pronto terem executado no processador por um quan- tum.',
+				b: 'No algoritmo de escalonamento por prioridades, uma prioridade é atribuı́da a cada um dos processos do sistema. Quando o escalonador for chamado para escolher um processo para ser executado, o processo 4no estado pronto com a maior prioridade será o escolhido. Este pro- cesso será executado até que a sua prioridade não seja mais maior ou igual do que as outras prioridades. Naturalmente, se o processo preci- sar ser bloqueado antes de o escalonador decidir que um outro processo deve ser executado, ele será bloqueado, e o próximo processo no estado pronto com a maior prioridade será o escolhido para ser executado no processador.',
+				c: 'No algoritmo do trabalho mais curto primeiro, o único dos algoritmos não-preemptivo, os processos no estado pronto são primeiramente orde- nados, em ordem crescente, de acordo com os tempos que eles precisam executar no processador. Logo, precisamos saber a priori o tempo de execução de cada processo do sistema no processador. Depois da or- denação, cada um destes processos, na ordem definida anteriormente, é executado exclusivamente no processador até terminar a sua execução, após o processo anterior, se existir, ter executado exclusivamente no processador.'
+			},
+			questoes:[
+				{
+					item: {
+						enunciado: 'No algoritmo de escalonamento',
+						res: 'No algoritmo de escalonamento por round robin, os processos no estado pronto executam alternadamente no processador por um quan- tum, cuja duração é definida pelo sistema operacional e é unico para todos os processos. Depois de executar por um quantum, um processo somente executará novamente no processador após todos os outros pro- cessos no estado pronto terem executado no processador por um quan- tum.',
+						url: ''
+					}
+				},
+				{
+					item: {
+						enunciado: 'No algoritmo de escalonamento por prioridades,',
+						res: 'Uma prioridade é atribuı́da a cada um dos processos do sistema. Quando o escalonador for chamado para escolher um processo para ser executado, o processo 4no estado pronto com a maior prioridade será o escolhido. Este pro- cesso será executado até que a sua prioridade não seja mais maior ou igual do que as outras prioridades. Naturalmente, se o processo preci- sar ser bloqueado antes de o escalonador decidir que um outro processo deve ser executado, ele será bloqueado, e o próximo processo no estado pronto com a maior prioridade será o escolhido para ser executado no processador.',
+						url: ''
+					}
+				},
+				{
+					item: {
+						enunciado: 'No algoritmo do trabalho mais curto primeiro',
+						res: 'O único dos algoritmos não-preemptivo, os processos no estado pronto são primeiramente orde- nados, em ordem crescente, de acordo com os tempos que eles precisam executar no processador. Logo, precisamos saber a priori o tempo de execução de cada processo do sistema no processador. Depois da or- denação, cada um destes processos, na ordem definida anteriormente, é executado exclusivamente no processador até terminar a sua execução, após o processo anterior, se existir, ter executado exclusivamente no processador.',
+						url: ''
+					}
+				}
+		]
 	},
 ]

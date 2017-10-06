@@ -87,8 +87,8 @@ export default {
         "title",
         "respostas",
         "enuns.a",
-        "enuns.b"
-        //"questoes[0].item.res"
+        "enuns.b",
+        'enuns.c'
       ]
     };
     this.perguntas = perguntasOs;
