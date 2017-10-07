@@ -316,4 +316,12 @@ module.exports = [
 		title: "O que são as seções crı́ticas",
 		respostas: "Quando um conjunto de processos cooperam para executar uma tarefa em comum eles, em geral, compartilham os diversos re- cursos necessários à execução daquela tarefa. Se alguns dos recursos compartilhados forem dedicados então, para que a tarefa seja execu- tada corretamente, cada um deles deverá ser acessado exclusivamente por um dos processos em um dado intervalo de tempo. Neste cenário, a seção crı́tica de cada processo é a parte do seu código que acessa recursos dedicados. Note que, devido à necessidade de se acessar ex- clusivamente o recurso, a seção crı́tica de um processo somente deverá ser executada se nenhuma das seções crı́ticas dos outros processos que acessam este mesmo recurso estiverem sendo executadas.",
 	},
+	{
+		title: "Descreva a diferença entre um processo executar em um sistema operacional sobre uma máquina real e sobre uma máquina virtual em relação a: (i) execução das instruções do processador e (ii) execução das operações de E/S.",
+		respostas: "Quando um processo executa em um sistema operacional sobre uma máquina virtual, todo acesso a um componente do hardware acessa uma versão virtual dele. Isto ocorre porque a máquina virtual é uma simulação na qual o processador virtual simula o processador real e os dispositivos virtuais simulam os dispositivos fı́sicos. Então, em relação ao item (i), é o processador virtual que executa as instruções do pro- cesso. Naturalmente, o monitor de máquina virtual usa o processador real para executar, alternadamente, a simulação do processador virtual de cada máquina virtual. Já em relação ao item (ii), cada operação é executada sobre um dispositivo virtual e é interceptada pelo monitor de máquina virtual. O monitor de máquina virtual, como parte da simulação da máquina real, então mapeia todas as operações de E/S feitas sobre um dispositivo virtual para o dispositivo fı́sico correspon- dente, que em geral é compartilhado por todas as máquinas virtuais.",
+	},
+	{
+		title: "Em que circunstâncias é possı́vel dois processos estarem simulta- neamente no estado executando?",
+		respostas: "Quando o hardware no qual o sistema operacional está execu- tando permite o paralelismo real, e não somente o pseudoparalelismo. Nesse caso, dois ou mais processos podem executar paralelamente no computador, cada um em uma das unidades de processamento do hard- ware. Essas unidades de processamento são processadores, núcleos (co- res) de um mesmo processador, ou threads de um mesmo núcleo.",
+	},
 ]
