@@ -324,4 +324,8 @@ module.exports = [
 		title: "Em que circunstâncias é possı́vel dois processos estarem simulta- neamente no estado executando?",
 		respostas: "Quando o hardware no qual o sistema operacional está execu- tando permite o paralelismo real, e não somente o pseudoparalelismo. Nesse caso, dois ou mais processos podem executar paralelamente no computador, cada um em uma das unidades de processamento do hard- ware. Essas unidades de processamento são processadores, núcleos (co- res) de um mesmo processador, ou threads de um mesmo núcleo.",
 	},
+		{
+		title: "Qual foi o objetivo principal da definição do conceito de multi- programação, o qual passou a ser usado nas duas últimas gerações de computadores?",
+		respostas: "Com o passar das gerações, a velocidade de processamento dos computadores se tornou cada vez maior. A velocidade dos dispositi- vos fı́sicos também aumentou, mas muito mais lentamente do que a velocidade de processamento. Com isso, o tempo de ociosidade do pro- cessador quando o programa em execução fazia operações de E/S ficou cada vez maior, pois cada programa era executado até terminar, sem interrupções. Além disso, existia uma grande demora para se obter os resultados dos programas. Para evitar esses problemas, o conceito de multiprogramação, que permite que mais de um programa esteja em execução no sistema através da divisão do tempo de processamento en- tre os programas, foi definido a partir da terceira geração.",
+	},
 ]
